@@ -2,7 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-
+/* Force dark theme globally */
+html, body {
+  @apply bg-gray-900 text-white;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
