@@ -1,43 +1,76 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* Global fixes */
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #0a0a0a;
+  font-family: 'Pixelify Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* Hero section */
+.hero-section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;   
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
   text-align: center;
+  padding: 0 2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.hero-name {
+  font-size: 8rem;
+  line-height: 1.1;
+  margin: 0;
+  color: #caa0db;
+  text-shadow:
+    0 0 10px #9b59b6,
+    0 0 20px #9b59b6,
+    0 0 30px #ff0080,
+    0 0 60px #ff0080,
+    0 0 100px #00ffff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.hero-tagline {
+  font-size: 2rem;
+  color: #ff0080;
+  margin-top: 1rem;
+  text-shadow: 0 0 5px #ff0080, 0 0 10px #00ffff;
 }
 
-.card {
-  padding: 2em;
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid #ff0080;
+  border-radius: 50%;
+  animation: bounce 1s infinite;
 }
 
-.read-the-docs {
-  color: #888;
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(20px); }
 }
 
+/* About section */
+.about-section {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  color: #fff;
+}
+
+.about-section h2 { font-size: 3rem; margin-bottom: 1rem; }
+.about-section p { font-size: 1.5rem; max-width: 700px; line-height: 1.6; }

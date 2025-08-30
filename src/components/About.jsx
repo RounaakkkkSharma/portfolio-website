@@ -1,18 +1,22 @@
+// src/components/About.jsx
+import React from "react";
 import { motion } from "framer-motion";
+import "../App.css";
 
 export default function About() {
   return (
     <motion.section
-      id="about"
-      className="p-10 bg-white text-center"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 1 }}
+      className="about-section"
+      initial={{ scale: 0.9, opacity: 0.8 }}
+      whileInView={{ scale: 1, opacity: 1 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 0.7 }}
     >
-      <h2 className="text-3xl font-bold mb-4">About Me</h2>
-      <p className="text-lg max-w-xl mx-auto">
-        I am a frontend developer passionate about building clean and responsive web applications using React and Tailwind CSS. I love learning new technologies and improving my skills every day.
+      <h2>About Me</h2>
+      <p>
+        I am a web developer passionate about building futuristic web experiences.
+        I love exploring cutting-edge technologies and creating smooth, interactive,
+        and visually appealing user interfaces.
       </p>
     </motion.section>
   );
