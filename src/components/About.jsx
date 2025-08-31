@@ -7,6 +7,7 @@ import Book from "./Academics"; // Your Academics component
 export default function About() {
   const [showBook, setShowBook] = useState(false);
 
+  // Container animation for achievements
   const containerVariants = {
     hidden: {},
     visible: {
@@ -16,6 +17,7 @@ export default function About() {
     },
   };
 
+  // Box animation for each achievement or image
   const boxVariants = {
     hidden: { opacity: 0, y: 50, scale: 0.95 },
     visible: {
@@ -26,6 +28,7 @@ export default function About() {
     },
   };
 
+  // Text animation
   const textVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -39,7 +42,7 @@ export default function About() {
     <motion.section
       className="about-section"
       style={{
-        backgroundColor: "#0a0a23", // dark cyberpunk background
+        backgroundColor: "#0a0a23",
         color: "#fff",
         padding: "4rem 2rem",
         minHeight: "100vh",
@@ -49,36 +52,75 @@ export default function About() {
       viewport={{ once: false, amount: 0.5 }}
       transition={{ duration: 1, ease: "easeInOut" }}
     >
-      {/* Heading */}
-      <motion.h2
-        variants={textVariants}
+      {/* Flex container: Text + Image */}
+      <div
         style={{
-          fontSize: "2.5rem",
-          textAlign: "center",
-          color: "#ff2d95", // neon pink
-          textShadow: "0 0 10px #ff2d95, 0 0 20px #ff2d95",
-          marginBottom: "2rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: "4rem",
+          flexWrap: "wrap",
+          marginBottom: "3rem",
         }}
       >
-        About Me
-      </motion.h2>
+        {/* Text Column */}
+        <motion.div style={{ flex: "1", minWidth: "300px" }} variants={containerVariants}>
+          <motion.h2
+            variants={textVariants}
+            style={{
+              fontSize: "3.5rem",
+              color: "#ff2d95",
+              textShadow: "0 0 10px #ff2d95, 0 0 20px #ff2d95",
+              marginBottom: "1.5rem",
+            }}
+          >
+            About Me
+          </motion.h2>
 
-      {/* Paragraph */}
-      <motion.p
-        variants={textVariants}
-        style={{
-          maxWidth: "800px",
-          margin: "0 auto 3rem auto",
-          textAlign: "center",
-          fontSize: "1.2rem",
-          color: "#00fff7", // neon cyan text
-          textShadow: "0 0 5px #00fff7, 0 0 10px #00fff7",
-        }}
-      >
-        I am a web developer passionate about building futuristic web experiences.
-        I love exploring cutting-edge technologies and creating smooth, interactive,
-        and visually appealing user interfaces.
-      </motion.p>
+          <motion.p
+            variants={textVariants}
+            style={{
+              fontSize: "1.5rem",
+              color: "#00fff7",
+              textShadow: "0 0 5px #00fff7, 0 0 10px #00fff7",
+            }}
+          >
+            I am a web developer passionate about building futuristic web experiences.
+            I love exploring cutting-edge technologies and creating smooth, interactive,
+            and visually appealing user interfaces.
+          </motion.p>
+        </motion.div>
+
+        {/* Image Column with hover glow */}
+        <motion.div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: "20px",
+          }}
+          whileHover={{
+            scale: 1.05,
+            boxShadow: `
+              0 0 20px #ff2d95, 
+              0 0 40px #ff2d95, 
+              0 0 30px #00fff7, 
+              0 0 50px #00fff7
+            `,
+          }}
+          transition={{ type: "spring", stiffness: 120, damping: 12 }}
+        >
+          <img
+            src="/assets/profile.png"
+            alt="My Portrait"
+            style={{
+              width: "350px",
+              borderRadius: "20px",
+              display: "block",
+            }}
+          />
+        </motion.div>
+      </div>
 
       {/* Achievements */}
       <motion.div
@@ -100,14 +142,14 @@ export default function About() {
           variants={boxVariants}
           whileHover={{ scale: 1.05 }}
           onClick={() => {
-  const element = document.getElementById("academics");
-  if (element) {
-    element.scrollIntoView({ behavior: "smooth" });
-  }
-}}
+            const element = document.getElementById("academics");
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
           style={{
             cursor: "pointer",
-            backgroundColor: "#1a0a3c", // dark purple box
+            backgroundColor: "#1a0a3c",
             padding: "1.5rem",
             borderRadius: "12px",
             width: "250px",
@@ -124,9 +166,13 @@ export default function About() {
           className="achievement-box"
           variants={boxVariants}
           whileHover={{ scale: 1.05 }}
+          onClick={() => {
+  const element = document.getElementById("sports");
+  if (element) element.scrollIntoView({ behavior: "smooth" });
+}}
           style={{
             cursor: "pointer",
-            backgroundColor: "#001f3f", // dark blue box
+            backgroundColor: "#001f3f",
             padding: "1.5rem",
             borderRadius: "12px",
             width: "250px",
@@ -145,7 +191,7 @@ export default function About() {
           whileHover={{ scale: 1.05 }}
           style={{
             cursor: "pointer",
-            backgroundColor: "#3a0a0a", // dark red box
+            backgroundColor: "#3a0a0a",
             padding: "1.5rem",
             borderRadius: "12px",
             width: "250px",
