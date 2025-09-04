@@ -6,6 +6,7 @@ import About from "./components/About";
 import Academics from "./components/Academics"; // new component
 import Sports from "./components/Sports";
 import Community from "./components/Community";
+import Contact from "./components/Contact";
 import "./App.css";
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
         <Community />
         </section>
 
+        <section id="contact">
+        <Contact />
+        </section>
 
       {/* You can add more sections like Projects or Contact */}
     </div>

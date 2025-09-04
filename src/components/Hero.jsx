@@ -23,10 +23,10 @@ export default function Hero() {
           zIndex: 1,
           position: "relative",
           textAlign: "center",
-          paddingTop: "100px", // <-- add padding from top
+          paddingTop: "150px", // <-- add padding from top
         }}
       >
-        <h1 className="hero-name cyber-text">ROUNAK SHARMA</h1>
+        <h1 className="hero-name cyber-text neon-text">ROUNAK SHARMA</h1>
         <p className="hero-tagline">Learning, Understanding, Adapting</p>
       </motion.div>
 

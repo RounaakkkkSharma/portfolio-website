@@ -1,67 +1,83 @@
-import { useState } from "react";
+// src/components/ContactMe.jsx
+import React from "react";
 import { motion } from "framer-motion";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: ""
-  });
+  const contacts = [
+    { type: "Email", value: "mail2rounaksharma@gmail.com", icon: "✉️", color: "#ff6a00", href: "mailto:mail2rounaksharma@gmail.com" },
+    { type: "Phone", value: "+91 9871013068", icon: "📞", color: "#00fff7", href: "tel:+919871013068" },
+    { type: "LinkedIn", value: "linkedin.com/in/rounak", icon: "🔗", color: "#0a66c2", href: "https://www.linkedin.com/in/rounaksharma04/" },
+    { type: "GitHub", value: "github.com/rounak", icon: "🐱", color: "#f5ff00", href: "https://github.com/RounaakkkkSharma" },
+  ];
 
-  const handleChange = (e) =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  // Container variants
+  const containerVariants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.2 },
+    },
+  };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert(`Thank you, ${formData.name}! Your message has been sent.`);
-    setFormData({ name: "", email: "", message: "" });
+  // Item variants
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
   };
 
   return (
-    <motion.section
+    <motion.div
       id="contact"
-      className="p-10 bg-white text-center"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 1 }}
+      className="contact-section"
+      style={{
+        padding: "200px",
+        textAlign: "center",
+        color: "white",
+        minHeight: "100vh",
+      }}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.3 }}
+      variants={containerVariants}
     >
-      <h2 className="text-3xl font-bold mb-4">Contact Me</h2>
-      <form className="max-w-md mx-auto flex flex-col gap-4" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          className="border p-2 rounded"
-          value={formData.name}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          className="border p-2 rounded"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          className="border p-2 rounded"
-          rows={5}
-          value={formData.message}
-          onChange={handleChange}
-          required
-        />
-        <button
-          type="submit"
-          className="px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transform hover:scale-105 transition"
-        >
-          Send
-        </button>
-      </form>
-    </motion.section>
+      <motion.h2
+        style={{
+          fontSize: "3.5rem",
+          marginBottom: "2rem",
+          color: "#ff2d95",
+          textShadow: "0 0 10px #ff2d95, 0 0 20px #ff2d95",
+        }}
+        variants={itemVariants}
+      >
+        Contact Me
+      </motion.h2>
+
+      <motion.ul
+        style={{ listStyle: "none", padding: 0, fontSize: "1.5rem" }}
+        variants={containerVariants}
+      >
+        {contacts.map((contact, index) => (
+          <motion.li
+            key={index}
+            style={{
+              margin: "1rem 0",
+              color: contact.color,
+              textShadow: `0 0 5px ${contact.color}, 0 0 10px ${contact.color}`,
+            }}
+            variants={itemVariants}
+          >
+            <span style={{ marginRight: "1rem" }}>{contact.icon}</span>
+            <strong>{contact.type}:</strong>{" "}
+            <a
+              href={contact.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: contact.color, textDecoration: "underline" }}
+            >
+              {contact.value}
+            </a>
+          </motion.li>
+        ))}
+      </motion.ul>
+    </motion.div>
   );
 }

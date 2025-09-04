@@ -51,7 +51,7 @@ export default function Academics() {
         }}
         variants={itemVariants}
       >
-        Academics     Achievements
+        Academics   Achievements
       </motion.h2>
 
       <motion.ul

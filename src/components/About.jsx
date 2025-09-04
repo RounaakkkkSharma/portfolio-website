@@ -2,10 +2,9 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import "../App.css";
-import Book from "./Academics"; // Your Academics component
 
 export default function About() {
-  const [showBook, setShowBook] = useState(false);
+
 
   // Container animation for achievements
   const containerVariants = {
@@ -65,24 +64,35 @@ export default function About() {
       >
         {/* Text Column */}
         <motion.div style={{ flex: "1", minWidth: "300px" }} variants={containerVariants}>
-          <motion.h2
-            variants={textVariants}
-            style={{
-              fontSize: "3.5rem",
-              color: "#ff2d95",
-              textShadow: "0 0 10px #ff2d95, 0 0 20px #ff2d95",
-              marginBottom: "1.5rem",
-            }}
-          >
-            About Me
-          </motion.h2>
+<motion.h2
+  className="flicker"
+  variants={textVariants}
+  style={{
+    fontSize: "3.5rem",
+    color: "#00fff7",
+    marginBottom: "1.5rem",
+  }}
+>
+  {"About Me".split("").map((char, index) => (
+    <span
+      key={index}
+      style={{
+        "--i": index,
+        animationDelay: `${Math.random() * 2}s`,
+      }}
+    >
+      {char === " " ? "\u00A0" : char} {/* keep the space */}
+    </span>
+  ))}
+</motion.h2>
+
 
           <motion.p
             variants={textVariants}
             style={{
               fontSize: "1.5rem",
-              color: "#00fff7",
-              textShadow: "0 0 5px #00fff7, 0 0 10px #00fff7",
+              color: "#ff2d95",
+              textShadow: "0 0 5px #ff2d95, 0 0 10px #ff2d95",
             }}
           >
             I am a web developer passionate about building futuristic web experiences.
@@ -189,6 +199,12 @@ export default function About() {
           className="achievement-box"
           variants={boxVariants}
           whileHover={{ scale: 1.05 }}
+          onClick={() => {
+            const element = document.getElementById("community");
+            if (element) {
+              element.scrollIntoView({ behavior: "smooth" });
+            }
+          }}
           style={{
             cursor: "pointer",
             backgroundColor: "#3a0a0a",
